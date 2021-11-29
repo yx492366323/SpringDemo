@@ -15,7 +15,7 @@ ${msg}
 <form action="login" method="POST">
     用户名:<input type="text" name="username"/><br/>
     密&nbsp;&nbsp;&nbsp;码:
-    <input type="passwd" name="password"/><br/>
+    <input type="password" name="passwd"/><br/>
     <input type="submit" value="登录"/>
 </form>
 </body>
