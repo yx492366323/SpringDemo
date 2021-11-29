@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mybatis.Mapper.UserTwoMapper">
+
+    <select id="findOrdersByUserId" parameterType="Integer" resultMap="Orderwithuser">
+        select * from person where Id = #{id}
+    </select>
+    <resultMap id="Orderwithuser" type="Domain.UserTwo">
+        <id property="id" column="Id"/>
+        <result property="name" column="Name"/>
+        <collection property="orderList" column="UserId" ofType="Domain.Order" select="Mybatis.Mapper.OrderMapper.findOrderByUserId"/>
+    </resultMap>
+</mapper>

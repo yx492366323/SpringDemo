@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <settings>
+        <!--输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="customer" type="Domain.Customer"/>
+<!--        <package name="Domain"/>-->
+    </typeAliases>
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="Mybatis/Mapper/Xml/CustomerMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/UserOneMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/PersonMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/IdcardMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/UserTwoMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/ProductMapper.xml"/>
+        <mapper resource="Mybatis/Mapper/Xml/OrderMapper.xml"/>
+    </mappers>
+</configuration>

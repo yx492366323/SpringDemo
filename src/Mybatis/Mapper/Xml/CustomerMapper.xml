@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mybatis.Mapper.CustomerMapper">
+    <cache/>
+    <select id="selectCustomerById" parameterType="Integer" resultType="customer">
+        select * from customer where Id = #{id}
+    </select>
+
+    <select id="findCustomerByName" parameterType="String" resultType="customer">
+        select * from customer where UserName like concat('%',#{value},'%')
+    </select>
+
+    <insert id="addCustomer" parameterType="customer">
+        insert into customer(UserName,Passwd,Jobs,Phone) values (#{UserName},#{Passwd},#{Jobs},#{Phone})
+    </insert>
+
+    <update id="updateCustomer" parameterType="customer">
+        update customer set UserName=#{UserName},Passwd=#{Passwd},Jobs=#{Jobs},Phone=#{Phone} where Id = #{id}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="Integer">
+        delete from customer where Id = #{id}
+    </delete>
+
+</mapper>

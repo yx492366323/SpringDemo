@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mybatis.Mapper.PersonMapper">
+    <select id="selectPersonById" parameterType="Integer" resultMap="IdCardwithPersion">
+        select * from person where Id = #{Id}
+    </select>
+    <resultMap id="IdCardwithPersion" type="Domain.Person">
+        <id property="id" column="Id"/>
+        <result property="name" column="Name"/>
+        <result property="age" column="Age"/>
+        <association property="idcard" column="CardCode" javaType="Domain.Idcard" select="Mybatis.Mapper.IdcardMapper.selectCardByCode"/>
+    </resultMap>
+</mapper>
